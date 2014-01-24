@@ -11,14 +11,20 @@ end
 if @lock_memory
   result << '-k'
 end
-if @listen_ip
-  result << '-l ' + @listen_ip
-end
-if @udp_port
-  result << '-U ' + @udp_port
-end
 if @item_size
   result << '-I ' + @item_size
 end
+if @unix_socket
+  result << '-a 0755 -s ' + @unix_socket
+else
+  if @listen_ip
+    result << '-l ' + @listen_ip
+  end
+  if @udp_port
+    result << '-U ' + @udp_port
+  end
+end
+
+
 result << '-t ' + @processorcount
 -%><%= result.join(' ') -%>"

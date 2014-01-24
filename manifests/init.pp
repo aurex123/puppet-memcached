@@ -32,6 +32,21 @@ class memcached(
     }
   }
 
+
+  # if $unix_socket {
+  #   $socket_path = dirname("$unix_socket")
+  #   exec { "exec mkdir -p ${socket_path}":
+  #     command => "mkdir -p ${socket_path}",
+  #     onlyif  => "test ! -d ${socket_path}",
+  #   }
+  #   file {"$unix_socket":
+  #     ensure  => present,
+  #     owner   => $user,
+  #     mode    => 0755,
+  #     require => Exec["exec mkdir -p ${socket_path}"]
+  #   }
+  # }
+
   file { $memcached::params::config_file:
     owner   => 'root',
     group   => 'root',
