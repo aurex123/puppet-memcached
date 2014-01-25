@@ -15,7 +15,7 @@ if @item_size
   result << '-I ' + @item_size
 end
 if @unix_socket
-  result << '-a 0755 -s ' + @unix_socket
+  result << '-a 0777 -s ' + @unix_socket
 else
   if @listen_ip
     result << '-l ' + @listen_ip
